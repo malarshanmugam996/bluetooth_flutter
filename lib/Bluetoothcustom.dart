@@ -39,7 +39,43 @@ class BluetoothCustomDevice {
     return scanResults;
   }
   Future<List<BluetoothDevice>> scanForPeripheralswithserviceid(List<Guid>ServicesGuid,List<Guid>withServices,List<Guid>webOptionalServices ) async {
+      try {
+      var withServices = [Guid("180f")]; // Battery Level Service
+
+      _systemDevices = await FlutterBluePlus.systemDevices(withServices);
+    } catch (e, backtrace) {
+      Snackbar.show(ABC.b, prettyException("System Devices Error:", e), success: false);
+      print(e);
+      print("backtrace: $backtrace");
+    }
     try {
+      const String heartRateServiceUuid = "180f";
+      const String deviceInformationServiceUuid = "1800";
+      const String myCustomServiceUuid = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
+
+      List<String> myServices = [
+        heartRateServiceUuid,
+        deviceInformationServiceUuid,
+        myCustomServiceUuid,
+      ];
+      await FlutterBluePlus.startScan(
+        timeout: const Duration(seconds: 15),
+        withServices: [],
+        webOptionalServices: [
+          //Guid("180f"), // battery
+         // Guid("1800"), // generic access
+         // Guid("6e400001-b5a3-f393-e0a9-e50e24dcca9e"), // Nordic UART
+        ],
+      );
+    } catch (e, backtrace) {
+      Snackbar.show(ABC.b, prettyException("Start Scan Error:", e), success: false);
+      print(e);
+      print("backtrace: $backtrace");
+    }
+    if (mounted) {
+      setState(() {});
+    }
+   // try {
       
      // const String heartRateServiceUuid = "180f";
      // const String deviceInformationServiceUuid = "1800";
@@ -50,24 +86,24 @@ class BluetoothCustomDevice {
         deviceInformationServiceUuid,
         myCustomServiceUuid,
       ];*/
-      await FlutterBluePlus.startScan(
-        timeout: const Duration(seconds: 15),
-        withServices: withServices,
-        webOptionalServices: webOptionalServices
+      //await FlutterBluePlus.startScan(
+       // timeout: const Duration(seconds: 15),
+       // withServices: withServices,
+        //webOptionalServices: webOptionalServices
           //Guid("180f"), // battery
           // Guid("1800"), // generic access
           // Guid("6e400001-b5a3-f393-e0a9-e50e24dcca9e"), // Nordic UART
 
       );
-      await Future.delayed(Duration(seconds: 15));
-       systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
-      print("systemDevices"+systemDevices.toString());
+     // await Future.delayed(Duration(seconds: 15));
+       //systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
+     // print("systemDevices"+systemDevices.toString());
      // systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
-    } catch (e, backtrace) {
+    //} catch (e, backtrace) {
      // Snackbar.show(ABC.b, prettyException("Start Scan Error:", e), success: false);
-      print(e);
-      print("backtrace: $backtrace");
-    }
+      //print(e);
+     // print("backtrace: $backtrace");
+    //}
     return systemDevices;
   }
   stopPeripheralScan(){
