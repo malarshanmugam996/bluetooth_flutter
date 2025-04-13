@@ -19,7 +19,7 @@ class BluetoothCustomDevice {
     });
    // return _adapterState;
   }
-   List<ScanResult> scanForPeripherals() async {
+   Future<List<ScanResult>> scanForPeripherals() async {
 
     await FlutterBluePlus.startScan(
         timeout: const Duration(seconds: 15),
