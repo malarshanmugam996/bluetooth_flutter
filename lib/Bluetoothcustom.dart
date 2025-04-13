@@ -151,15 +151,15 @@ class BluetoothCustomDevice {
     }
   return services;
   }
-  void connect(BluetoothDevice device) async {
+   connect(BluetoothDevice device) async {
     bool  isConnected=false;
     try {
       await device.connect();
 
-     /* connectionStateSubscription = device.connectionState.listen((state) {
+      connectionStateSubscription = device.connectionState.listen((state) {
         connectionState = state;
 
-      });*/
+      });
       //isConnected= connectionState == BluetoothConnectionState.connected;
     } catch (e, backtrace) {
       if (e is FlutterBluePlusException && e.code == FbpErrorCode.connectionCanceled.index) {
@@ -169,7 +169,7 @@ class BluetoothCustomDevice {
         print("backtrace: $backtrace");
       }
     }
-   // return isConnected!;
+    return isConnected!;
   }
 
   disconnect(BluetoothDevice device) async {
