@@ -59,7 +59,7 @@ class BluetoothCustomDevice {
           // Guid("6e400001-b5a3-f393-e0a9-e50e24dcca9e"), // Nordic UART
 
       );
-      Future.delayed(Duration(seconds: 15));
+      await Future.delayed(Duration(seconds: 15));
        systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
       print("systemDevices"+systemDevices.toString());
      // systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
