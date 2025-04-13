@@ -40,6 +40,8 @@ class BluetoothCustomDevice {
   }
   Future<List<BluetoothDevice>> scanForPeripheralswithserviceid(List<Guid>ServicesGuid,List<Guid>withServices,List<Guid>webOptionalServices ) async {
     try {
+       systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
+      print("systemDevices"+systemDevices.toString());
      // const String heartRateServiceUuid = "180f";
      // const String deviceInformationServiceUuid = "1800";
      // const String myCustomServiceUuid = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
