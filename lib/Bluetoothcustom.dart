@@ -160,7 +160,7 @@ class BluetoothCustomDevice {
         connectionState = state;
 
       });
-      //isConnected= connectionState == BluetoothConnectionState.connected;
+      isConnected= connectionState == BluetoothConnectionState.connected;
     } catch (e, backtrace) {
       if (e is FlutterBluePlusException && e.code == FbpErrorCode.connectionCanceled.index) {
         // ignore connections canceled by the user
