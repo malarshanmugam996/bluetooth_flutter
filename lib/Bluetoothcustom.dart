@@ -38,7 +38,7 @@ class BluetoothCustomDevice {
     });
     return scanResults;
   }
-  Future<List<BluetoothDevice>> scanForPeripheralswithserviceid(List<Guid>ServicesGuid,List<Guid>withServices,List<Guid>webOptionalServices ) async {
+  Future<List<ScanResult>> scanForPeripheralswithserviceid(List<Guid>ServicesGuid,List<Guid>withServices,List<Guid>webOptionalServices ) async {
      
    try {
       
