@@ -68,7 +68,7 @@ class BluetoothCustomDevice {
         ],
       );
     } catch (e, backtrace) {
-      Snackbar.show(ABC.b, prettyException("Start Scan Error:", e), success: false);
+     // Snackbar.show(ABC.b, prettyException("Start Scan Error:", e), success: false);
       print(e);
       print("backtrace: $backtrace");
     }
