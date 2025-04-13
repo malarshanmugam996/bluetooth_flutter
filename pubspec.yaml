@@ -14,9 +14,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  bluetooth:
+      git:
+        url: git@github.com:malarshanmugam996/Bluetooth.git
+        ref: main
+
   cupertino_icons: ^1.0.8
   flutter_blue_plus:
   clover:
+
 
 dev_dependencies:
   flutter_test:
