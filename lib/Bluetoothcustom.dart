@@ -60,7 +60,7 @@ class BluetoothCustomDevice {
           // Guid("6e400001-b5a3-f393-e0a9-e50e24dcca9e"), // Nordic UART
 
       );
-      systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
+     // systemDevices = await FlutterBluePlus.systemDevices(ServicesGuid);
     } catch (e, backtrace) {
      // Snackbar.show(ABC.b, prettyException("Start Scan Error:", e), success: false);
       print(e);
