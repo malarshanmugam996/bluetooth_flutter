@@ -38,7 +38,7 @@ class BluetoothCustomDevice {
     });
     return scanResults;
   }
-  scanForPeripheralswithserviceid(List<Guid>ServicesGuid ) async {
+  Future<List<BluetoothDevice>> scanForPeripheralswithserviceid(List<Guid>ServicesGuid,List<Guid>withServices,List<Guid>webOptionalServices ) async {
     try {
      // const String heartRateServiceUuid = "180f";
      // const String deviceInformationServiceUuid = "1800";
@@ -51,8 +51,8 @@ class BluetoothCustomDevice {
       ];*/
       await FlutterBluePlus.startScan(
         timeout: const Duration(seconds: 15),
-        withServices: ServicesGuid,
-        webOptionalServices: ServicesGuid
+        withServices: withServices,
+        webOptionalServices: webOptionalServices
           //Guid("180f"), // battery
           // Guid("1800"), // generic access
           // Guid("6e400001-b5a3-f393-e0a9-e50e24dcca9e"), // Nordic UART
