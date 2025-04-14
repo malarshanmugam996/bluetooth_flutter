@@ -151,7 +151,7 @@ class BluetoothCustomDevice {
     }
   return services;
   }
-   connect(BluetoothDevice device) async {
+    Future<bool>connect(BluetoothDevice device) async {
     bool  isConnected=false;
     try {
       await device.connect();
