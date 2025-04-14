@@ -154,7 +154,9 @@ class BluetoothCustomDevice {
     Future<bool>connect(BluetoothDevice device) async {
     bool  isConnected=false;
     try {
-      await device.connect();
+      device.connectAndUpdateStream().catchError((e) {
+      Snackbar.show(ABC.c, prettyException("Connect Error:", e), success: false);
+    });
 
       connectionStateSubscription = device.connectionState.listen((state) {
         connectionState = state;
