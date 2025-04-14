@@ -17,7 +17,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.8
-  flutter_blue_plus:
+  flutter_blue_plus: ^1.35.3
   clover:
 
 
